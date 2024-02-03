@@ -38,3 +38,7 @@
 //   FOREIGN KEY (technician) REFERENCES technicians(id),
 //   FOREIGN KEY (apartment) REFERENCES apartments(id)
 // );
+
+
+//update jobs to add priority
+//ALTER TABLE jobs ADD COLUMN priority INT NOT NULL DEFAULT 0;
