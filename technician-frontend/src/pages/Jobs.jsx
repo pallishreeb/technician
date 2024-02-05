@@ -13,13 +13,12 @@ import {
 import nodata from "../assets/nodata.png";
 import { useTaskApi } from "../context/taskContext/taskProvider";
 import { useNavigate } from "react-router-dom";
-import Dropdown from "../components/Dropdown";
-import JobTable from "../components/JobTable";
 import DeleteModal from "../components/DeleteModal";
-import AnalyticsCard from "../components/AnalyticsCard";
-import { useAuthApi } from "../context/authContext/authProvider";
+import {
+  useAuthApi,
+} from "../context/authContext/authProvider";
 
-
+import { AddJobButton, AnalyticsCard, JobTable, Dropdown } from "../components";
 function Jobs() {
   const navigate = useNavigate();
   const [jobToDelete, setJobToDelete] = useState(null);
@@ -33,12 +32,11 @@ function Jobs() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if(error === 401){
+    if (error === 401) {
       localStorage.removeItem("user");
       localStorage.removeItem("token");
     }
   }, [error]);
-
   const getJobs = async () => {
     setLoading(true);
     getAllJobs(authState?.token)
@@ -47,17 +45,17 @@ function Jobs() {
         setLoading(false);
       })
       .catch((error) => {
-        if(error?.response?.status === 401){
-          setError(401)
+        if (error?.response?.status === 401) {
+          setError(401);
           setLoading(false);
-        }else{
+        } else {
           toast.error(
             error?.response?.data?.message ||
               "Something Went Wrong, Please Try Later"
           );
           setLoading(false);
         }
-       
+
         // console.log(error);
       });
   };
@@ -66,15 +64,15 @@ function Jobs() {
       const res = await getAnalytics(authState?.token);
       setAnalytics(res?.data);
     } catch (error) {
-      if(error?.response?.status === 401){
-        setError(401)
-      }else{
+      if (error?.response?.status === 401) {
+        setError(401);
+      } else {
         toast.error(
           error?.response?.data?.message ||
             "Something Went Wrong, Please Try Later"
         );
       }
-      
+
       // console.log(error);
     }
   };
@@ -83,15 +81,15 @@ function Jobs() {
       const res = await getAllTechnicians(authState?.token);
       dispatch({ type: GET_TECHNICIANS, payload: res.data });
     } catch (error) {
-      if(error?.response?.status === 401){
-        setError(401)
-      }else{
+      if (error?.response?.status === 401) {
+        setError(401);
+      } else {
         toast.error(
           error?.response?.data?.message ||
             "Something Went Wrong, Please Try Again"
         );
       }
-     
+
       // console.log(error);
     }
   };
@@ -190,15 +188,7 @@ function Jobs() {
         </div>
         <div className="flex justify-between  mt-5  py-3 px-3 md:px-6 ">
           <Dropdown setFilter={setFilter} filter={filter} />
-          <button
-            type="button"
-            onClick={() => navigate("/add-job")}
-            className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4  sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none outline-none rounded "
-          >
-            <p className="text-sm font-medium leading-none text-white">
-              Add Job
-            </p>
-          </button>
+          <AddJobButton />
         </div>
         {state.tasks?.length === 0 ? (
           <div className="flex justify-center items-center">

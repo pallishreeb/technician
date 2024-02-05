@@ -9,12 +9,12 @@ import {
   FaEyeSlash,
   FaSpinner
 } from "react-icons/fa";
-import { GET_TECHNICIANS } from "../context/constansts";
-import { useTaskApi } from "../context/taskContext/taskProvider";
-import { getAllTechnicians } from "../networkCalls";
+import { GET_TECHNICIANS } from "../../context/constansts";
+import { useTaskApi } from "../../context/taskContext/taskProvider";
+import { getAllTechnicians } from "../../networkCalls";
 import { toast } from "react-toastify";
-import { useAuthApi } from "../context/authContext/authProvider";
-import nodata from "../assets/nodata.png";
+import { useAuthApi } from "../../context/authContext/authProvider";
+import nodata from "../../assets/nodata.png";
 const TechnicianTable = ({
   setDeleteModal,
   setModal,

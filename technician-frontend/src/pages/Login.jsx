@@ -1,7 +1,6 @@
 /** @format */
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { LOAD_USER_SUCCESS } from "../context/constansts";
 import { url } from "../config";
 import axios from "axios";

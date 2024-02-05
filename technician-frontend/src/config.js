@@ -1,4 +1,4 @@
-export const url  = "http://localhost:3000/api"
-export const imgUrl = "http://localhost:3000/uploads/"
+export const url = "https://phpstack-1202383-4249121.cloudwaysapps.com/api";
+export const imgUrl = "https://phpstack-1202383-4249121.cloudwaysapps.com/uploads/";
 
 

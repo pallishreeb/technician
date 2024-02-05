@@ -13,8 +13,7 @@ import {
   GET_TECHNICIANS,
 } from "../context/constansts";
 import { addJob, getAllApartments, getAllTechnicians } from "../networkCalls";
-import ApartmentSelect from "../components/ApartmentSelect";
-import TechnicianSelect from "../components/TechnicianSelect";
+import { ApartmentSelect, TechnicianSelect } from "../components";
 import { toast } from "react-toastify";
 function Form() {
   const currentDate = new Date().toISOString().split("T")[0];
@@ -149,7 +148,6 @@ function Form() {
         console.log(error, "error add job form");
       });
   };
-  console.log(data.timeline);
   return (
     <div className="container mx-auto p-4 lg:p-8  md:max-w-3xl xl:max-w-4xl ">
       <form

@@ -12,13 +12,14 @@ import {
 import { BsFileText, BsBuilding } from "react-icons/bs";
 import { AiOutlineTag } from "react-icons/ai";
 import { AiOutlineMail } from "react-icons/ai";
-import { IoMdImage } from 'react-icons/io';
+import { IoMdImage } from "react-icons/io";
 import { useAuthApi } from "../context/authContext/authProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import { imgUrl } from "../config";
 import { getImages, getJob, uploadImages } from "../networkCalls";
 import { toast } from "react-toastify";
-import DeleteImageModal from "../components/ImageDeleteModal";
+import { ImageDeleteModal as DeleteImageModal } from "../components";
+
 function JobDetails() {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -34,7 +35,7 @@ function JobDetails() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if(error === 401){
+    if (error === 401) {
       localStorage.removeItem("user");
       localStorage.removeItem("token");
     }
@@ -48,17 +49,16 @@ function JobDetails() {
         setLoading(false);
       })
       .catch((error) => {
-        if(error?.response?.status === 401){
-          setError(401)
+        if (error?.response?.status === 401) {
+          setError(401);
           setLoading(false);
-        }else{
+        } else {
           toast.error(
             error?.response?.data?.message ||
               "Something Went Wrong, Please Try Later"
           );
           setLoading(false);
         }
-     
       });
   };
   const getImagesFnc = async () => {
@@ -201,32 +201,32 @@ function JobDetails() {
             )}
           </div>
           <div className="flex space-x-4 mt-4 overflow-x-auto">
-          <p className="text-gray-700">
+            <p className="text-gray-700">
               <IoMdImage className="text-gray-400 inline-block mr-2" />
               Images:
             </p>
-  {imageUrls[0] !== "" && imageUrls?.length > 0? (
-    imageUrls?.map((imageUrl, index) => (
-      <button
-        key={index}
-        onClick={() => setSelectedImage(imageUrl)}
-        className={`w-10 h-10 rounded-full overflow-hidden focus:outline-none ${
-          selectedImage === imageUrl ? "border-2 border-indigo-500" : ""
-        }`}
-      >
-        <img
-          src={imgUrl + imageUrl}
-          alt={`thumb ${index + 1}`}
-          className="w-full h-full object-cover"
-        />
-      </button>
-    ))
-  ) : (
-    <b>NA</b>
-  )}
-</div>
-
-
+            {imageUrls[0] !== "" && imageUrls?.length > 0 ? (
+              imageUrls?.map((imageUrl, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedImage(imageUrl)}
+                  className={`w-10 h-10 rounded-full overflow-hidden focus:outline-none ${
+                    selectedImage === imageUrl
+                      ? "border-2 border-indigo-500"
+                      : ""
+                  }`}
+                >
+                  <img
+                    src={imgUrl + imageUrl}
+                    alt={`thumb ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              ))
+            ) : (
+              <b>NA</b>
+            )}
+          </div>
 
           {/* Display selected image */}
           {deleteModalShow && (

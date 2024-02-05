@@ -1,9 +1,9 @@
 /** @format */
 
 import React from "react";
-import { deleteImage } from "../networkCalls";
+import { deleteImage } from "../../networkCalls";
 import { toast } from "react-toastify";
-import { useAuthApi } from "../context/authContext/authProvider";
+import { useAuthApi } from "../../context/authContext/authProvider";
 const DeleteImageModal = ({
   setModal,
   jobId,

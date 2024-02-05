@@ -2,13 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
-import { FaPencilAlt, FaSpinner, FaTrash, FaTrashAlt } from "react-icons/fa";
-import { getAllApartments } from "../networkCalls";
-import { GET_APARTMENTS } from "../context/constansts";
-import { useTaskApi } from "../context/taskContext/taskProvider";
+import { FaPencilAlt, FaSpinner,  FaTrashAlt } from "react-icons/fa";
+import { getAllApartments } from "../../networkCalls";
+import { GET_APARTMENTS } from "../../context/constansts";
+import { useTaskApi } from "../../context/taskContext/taskProvider";
 import { toast } from "react-toastify";
-import { useAuthApi } from "../context/authContext/authProvider";
-import nodata from "../assets/nodata.png";
+import { useAuthApi } from "../../context/authContext/authProvider";
+import nodata from "../../assets/nodata.png";
 const JobTable = ({
   setDeleteModal,
   setModal,

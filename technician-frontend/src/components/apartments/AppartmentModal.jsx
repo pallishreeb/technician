@@ -1,10 +1,9 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import { useAuthApi } from "../context/authContext/authProvider";
-import { useTaskApi } from "../context/taskContext/taskProvider";
-import { ADD_APARTMENT, UPDATE_APARTMENT } from "../context/constansts";
-import { addApartment, updateApartment } from "../networkCalls";
+import { useTaskApi } from "../../context/taskContext/taskProvider";
+import { ADD_APARTMENT, UPDATE_APARTMENT } from "../../context/constansts";
+import { addApartment, updateApartment } from "../../networkCalls";
 import { toast } from "react-toastify";
 const AppartmentModal = ({
   setModal,
@@ -12,7 +11,6 @@ const AppartmentModal = ({
   setAppartmentToUpdate,
   modal,
 }) => {
-  const { state: authState } = useAuthApi();
   const { dispatch } = useTaskApi();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({

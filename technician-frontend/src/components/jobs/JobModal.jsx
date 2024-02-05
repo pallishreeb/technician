@@ -1,24 +1,23 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import { useAuthApi } from "../context/authContext/authProvider";
-import { useTaskApi } from "../context/taskContext/taskProvider";
-import { url } from "../config";
+import { useAuthApi } from "../../context/authContext/authProvider";
+import { useTaskApi } from "../../context/taskContext/taskProvider";
+import { url } from "../../config";
 import {
   ADD_TASK,
   GET_APARTMENTS,
   GET_TECHNICIANS,
   UPDATE_TASK,
-} from "../context/constansts";
+} from "../../context/constansts";
 import axios from "axios";
 import {
   addJob,
   getAllApartments,
   getAllTechnicians,
   updateJob,
-} from "../networkCalls";
-import ApartmentSelect from "./ApartmentSelect";
-import TechnicianSelect from "./TechnicianSelect";
+} from "../../networkCalls";
+import { ApartmentSelect, TechnicianSelect } from "../../components";
 import { toast } from "react-toastify";
 import { FaTimes } from "react-icons/fa";
 

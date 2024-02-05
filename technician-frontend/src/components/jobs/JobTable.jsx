@@ -15,6 +15,16 @@ const JobTable = ({ setDeleteModal, tasks, setJobToDelete }) => {
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected);
   };
+  const priorityAttr = [
+    {
+      label: "Normal",
+      classNames: "bg-green-300 text-black",
+    },
+    {
+      label: "High",
+      classNames: "bg-red-600 text-white",
+    },
+  ];
   const getStatusColor = (job) => {
     switch (job.status) {
       case "Assigned":
@@ -63,6 +73,9 @@ const JobTable = ({ setDeleteModal, tasks, setJobToDelete }) => {
               <th className="py-2 px-2 md:py-3 md:px-6 text-xs md:md:text-base text-left whitespace-nowrap uppercase font-semibold">
                 Status
               </th>
+              {/* <th className="py-2 px-2 md:py-3 md:px-6 text-xs md:md:text-base text-left whitespace-nowrap uppercase font-semibold">
+                Priority
+              </th> */}
               <th className="py-2 px-2 md:py-3 md:px-6 text-xs md:md:text-base text-left whitespace-nowrap uppercase font-semibold">
                 Action
               </th>
@@ -97,6 +110,13 @@ const JobTable = ({ setDeleteModal, tasks, setJobToDelete }) => {
                     {job?.status || "NA"}
                   </span>
                 </td>
+                {/* <td className="py-2 px-2 md:py-3 md:px-6 text-xs md:text-sm text-left whitespace-nowrap">
+                  <span
+                    className={`rounded-full py-1 px-3 ${getStatusColor(job)}`}
+                  >
+                    {job?.status || "NA"}
+                  </span>
+                </td> */}
                 <td className="py-2 flex flex-row gap-3 px-2 md:py-3 md:px-6 text-xs md:text-sm text-left whitespace-nowrap">
                   <FaEye
                     onClick={() => navigate(`/job/${job?.id}`)}

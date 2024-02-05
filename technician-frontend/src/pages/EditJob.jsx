@@ -18,10 +18,9 @@ import {
   updateJob,
   getJob,
 } from "../networkCalls";
-import ApartmentSelect from "../components/ApartmentSelect";
-import TechnicianSelect from "../components/TechnicianSelect";
 import { toast } from "react-toastify";
 import { format, parse, parseISO } from "date-fns";
+import { ApartmentSelect, TechnicianSelect } from "../components";
 function Form() {
   const currentDate = new Date().toISOString().split("T")[0];
   const navigate = useNavigate();

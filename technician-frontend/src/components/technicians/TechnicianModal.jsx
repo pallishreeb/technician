@@ -1,12 +1,12 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import { useAuthApi } from "../context/authContext/authProvider";
-import { useTaskApi } from "../context/taskContext/taskProvider";
-import { ADD_TECHNICIAN, UPDATE_TECHNICIAN } from "../context/constansts";
+import { useAuthApi } from "../../context/authContext/authProvider";
+import { useTaskApi } from "../../context/taskContext/taskProvider";
+import { ADD_TECHNICIAN, UPDATE_TECHNICIAN } from "../../context/constansts";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 
-import { addTechnician, updateTechnician } from "../networkCalls";
+import { addTechnician, updateTechnician } from "../../networkCalls";
 import { toast } from "react-toastify";
 const TechnicianModal = ({
   setModal,

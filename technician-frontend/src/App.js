@@ -11,16 +11,16 @@ import Navbar from "./components/Navbar";
 import { useAuthApi } from "./context/authContext/authProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Events from "./pages/Events";
-import AddJob from "./pages/AddJob"
-import EditJob from "./pages/EditJob"
+import AddJob from "./pages/AddJob";
+import EditJob from "./pages/EditJob";
 import JobDetails from "./pages/Jobdetails";
-import {LOGOUT} from "./context/constansts"
+import { LOGOUT } from "./context/constansts";
 import axios from "axios";
+import Calendar from "./pages/Calender";
 
 function App() {
-  const navigate = useNavigate()
-  const {dispatch} = useAuthApi()
+  const navigate = useNavigate();
+  const { dispatch } = useAuthApi();
   axios.interceptors.response.use(
     async function (response) {
       return response;
@@ -30,37 +30,35 @@ function App() {
       if (res.status === 401 && res.config && !res.config.__isRetryRequest) {
         localStorage.removeItem("user");
         localStorage.removeItem("token");
-        dispatch({type:LOGOUT})
-        navigate("/")
+        dispatch({ type: LOGOUT });
+        navigate("/");
       }
-    },
+    }
   );
   const { state } = useAuthApi();
-  let admin = state.user
+  let admin = state.user;
   return (
     <div className="bg-blue">
-      {
-        admin && <Navbar />
-      }
-
+      {admin && <Navbar />}
 
       <ToastContainer limit={1} autoClose={2000} hideProgressBar={true} />
-      {
-        admin ? <Routes>
+      {admin ? (
+        <Routes>
           <Route exact path="/" element={<Jobs />} />
           <Route exact path="/add-job" element={<AddJob />} />
           <Route exact path="/edit-job/:id" element={<EditJob />} />
           <Route exact path="/job/:id" element={<JobDetails />} />
           <Route exact path="/technicians" element={<Technicians />} />
           <Route exact path="/apartments" element={<Apartments />} />
-          <Route exact path="/events" element={<Events />} />
+          <Route exact path="/calender" element={<Calendar />} />
           <Route path="*" element={<PageNotFound />} />
-        </Routes> : <Routes>
+        </Routes>
+      ) : (
+        <Routes>
           <Route exact path="/" element={<Login />} />
           <Route path="*" element={<Login />} />
         </Routes>
-      }
-
+      )}
     </div>
   );
 }

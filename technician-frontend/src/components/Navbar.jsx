@@ -74,10 +74,10 @@ const Navbar = () => {
                 <FaHome className="text-xl" /> <span>Apartments</span>
               </li>
             </Link>
-            <Link to={"/events"}>
+            <Link to={"/calender"}>
               <li
                 className={` cursor-pointer flex  gap-1 items-center  ${
-                  location.pathname === "/events" ? "active-menu" : ""
+                  location.pathname === "/calender" ? "active-menu" : ""
                 }`}
               >
                 <FaCalendarAlt className="text-xl" /> <span>Events</span>
